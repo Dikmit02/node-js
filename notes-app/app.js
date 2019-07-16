@@ -1,13 +1,22 @@
 const chalk=require('chalk')
 const getNotes=require('./notes.js')
-const msg=getNotes()
-console.log(chalk.green(msg))
+const command=process.argv[2]
+console.log(command);
+//node app.js remove add
+console.log(process.argv);//[
+//     'C:\\Program Files\\nodejs\\node.exe',
+//     'C:\\Users\\diksh\\Desktop\\node-js\\notes-app\\app.js',
+//     'remove',
+//     'add'
+//   ]
 
-// console.log(validator.isEmail('diksha@example.com'));
-
-// const string=require('./notes.js')
-// console.log(string)
-//[Function: getNotes] output
+if(command==='add'){
+    console.log('Adding notes');
+}
+else if(command==='remove'){
+    console.log('Deleting notes');
+}
+//node app.js remove output is Deleting notes
 
 
 
