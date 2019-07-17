@@ -1,4 +1,5 @@
 const fs=require('fs')
+const chalk=require('chalk')
 function getNotes(){
     return "Your Notes..."
 }
@@ -17,13 +18,30 @@ const addnotes=function(title,body){
             body:body
         })
         saveNotes(notes)
-        console.log("new note added");
+        console.log(chalk.blue.inverse("new note added"));
      }
      else{
-         console.log("node titile taken!");
+         console.log(chalk.pink.inverse("node titile taken!"));
      }
      
      
+}
+
+const removeNotes=function(title){
+     const notedik=loadNotes()
+     const notesToKeep=notedik.filter(function(nott){
+         return nott.title!==title
+
+     })
+
+     if(notedik.length>notesToKeep.length){
+         console.log(chalk.green.inverse('NOTE REMOVED'));
+         saveNotes(notesToKeep)
+     }
+     else{
+        console.log(chalk.red.inverse('NOTE NOT FOUND'));
+     }
+    
 }
 
 const saveNotes=function(notes){
@@ -44,5 +62,6 @@ const loadNotes=function(){
 }
 module.exports={
     getNotes: getNotes,
-    addnotes: addnotes
+    addnotes: addnotes,
+    removeNotes:removeNotes
 }
