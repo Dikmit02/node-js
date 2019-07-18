@@ -2,22 +2,22 @@
  const geocode=require('./utils/geocode')
  const forecast=require('./utils/forecast')
 
-const add=proces.argv[2]
+const add=process.argv[2]
 
 if(!add){
    console.log('Please provide an address');
 }
 else{
-geocode(add,(error,data)=>{
+geocode(add,(error,{latitude,longitude,location})=>{
   
    if(error){
       return console.log('Error',error);
    }
-   forecast(data.latitude,data.longitude,(error,forecastdata)=>{
+   forecast(latitude,longitude,(error,forecastdata)=>{
       if(error){
          console.log('Error',error);
       }
-      console.log(data.location);
+      console.log(location);
        console.log(forecastdata);
    })
 
