@@ -1,21 +1,31 @@
 const express=require('express')
 const app=express();
 
-//app.com
-//app.com/help
-//app.com/about
 
 app.get('',(req,res)=>{
-    // for app.com
-    // req-request
-    // res-response
-    res.send('Hello express')
+    res.send('<h1>Weather</h1>')
+})
+app.get('/json',(req,res)=>{
+    res.send({
+        // sending the data and stingigy automatically
+        nmae:'diksha',
+        age:21,
+        features:[{
+            newitem:'bag',
+            newnumber:56
+        }]
+    })
 })
 app.get('/help',(req,res)=>{
-    res.send('Help page')
+    res.send('<title>Help page</title>')
 })
 app.get('/weather',(req,res)=>{
-    res.send('weather')
+    res.send({
+        forecat:[{
+            latitide:121,
+            longitude:4848
+        }]
+    })
 })
 app.get('/about',(req,res)=>{
     res.send('about page')
