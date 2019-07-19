@@ -1,6 +1,11 @@
 const yargs = require('yargs')
 const notes=require('./notes.js') 
 
+// const command=process.argv;
+// const p=yargs.argv;
+// console.log(command);
+// console.log(p);
+
 yargs.command({
     command: 'add',
     describe: 'Add a new note',
@@ -16,9 +21,8 @@ yargs.command({
              type: 'string'
         }
     },
-
     handler(argv){
-        notes.addnotes(argv.title,argv.body)
+         notes.addnotes(argv.title,argv.body)
     }
 })
 yargs.command({
