@@ -3,13 +3,28 @@ const express=require('express')
 
 
 const app=express();
+
+
+//Define path foe Express config
+const publicDirectoryPath=path.join(__dirname,'/public')
+
+
+
+//Setup handlebars engine and views location
 app.set('view engine','hbs')
-app.use("",express.static(path.join(__dirname,'/public')))
+
+
+//Setup handlebars engine and views  location
+app.use("/m",express.static(publicDirectoryPath))
+
 
 //app.use("start url")
+// app.use('/m',(req,res)=>{
+//     res.send('hello')
+// })
 
 
-app.get('',(req,res)=>{
+app.get('/a',(req,res)=>{
     res.render('index',{
         title:'Weather app',
         name:'Diksha'
@@ -33,7 +48,11 @@ app.get('/weather',(req,res)=>{
 
 
 app.listen(3000,()=>{
-    // srver is setting up and it is instantly
-    console.log('sever is start at port 3000');
+    
 })
 
+// C:\Users\diksh\Desktop\node-js\web-server>node app.js
+// DIKSHAAAC:\Users\diksh\Desktop\node-js\web-server
+// mmmmmC:\Users\diksh\Desktop\node-js\web-server\public
+// jnfjnC:\Users\diksh\Desktop\node-js\web-server\public
+// MITTALC:\Users\diksh\Desktop\node-js\public
