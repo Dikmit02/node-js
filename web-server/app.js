@@ -1,30 +1,25 @@
 const path=require('path')
 const express=require('express')
-
+const hbs=require('hbs')
 
 const app=express();
 
 
 //Define path foe Express config
 const publicDirectoryPath=path.join(__dirname,'/public')
-
+const partialPath=path.join(__dirname,'/partials')
 
 
 //Setup handlebars engine and views location
 app.set('view engine','hbs')
-
+hbs.registerPartials(partialPath)
 
 //Setup handlebars engine and views  location
-app.use("/m",express.static(publicDirectoryPath))
+app.use("/",express.static(publicDirectoryPath))
 
 
-//app.use("start url")
-// app.use('/m',(req,res)=>{
-//     res.send('hello')
-// })
 
-
-app.get('/a',(req,res)=>{
+app.get('/',(req,res)=>{
     res.render('index',{
         title:'Weather app',
         name:'Diksha'
@@ -47,12 +42,4 @@ app.get('/weather',(req,res)=>{
 })
 
 
-app.listen(3000,()=>{
-    
-})
-
-// C:\Users\diksh\Desktop\node-js\web-server>node app.js
-// DIKSHAAAC:\Users\diksh\Desktop\node-js\web-server
-// mmmmmC:\Users\diksh\Desktop\node-js\web-server\public
-// jnfjnC:\Users\diksh\Desktop\node-js\web-server\public
-// MITTALC:\Users\diksh\Desktop\node-js\public
+app.listen(1234) 
