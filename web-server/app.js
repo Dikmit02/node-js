@@ -32,6 +32,14 @@ app.get('/about',(req,res)=>{
     })
 })
 
+app.get('/help', (req, res) => {
+    res.render('help', {
+        helpText: 'This is some helpful text.',
+        title: 'Help',
+        name: 'Diksha Mittal'
+    })
+})
+
 app.get('/weather',(req,res)=>{
     res.send({
         forecat:[{
@@ -40,6 +48,20 @@ app.get('/weather',(req,res)=>{
         }]
     })
 })
+app.get('/help/*',(req,res)=>{
+    res.render('404',{
+        title:'404',
+        name:'Diksha MIttal',
+        errormessage:'Help article not found'
+    })
+})
 
+app.get('*',(req,res)=>{
+    res.render('404',{
+        title:'404',
+        name:'Diksha Mittal',
+        errormessage:'Page not found'
+    })
+})
 
 app.listen(1234) 
